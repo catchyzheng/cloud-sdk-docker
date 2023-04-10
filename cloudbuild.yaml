@@ -14,6 +14,8 @@ steps:
   id: multi_arch_step1
   args:
   - 'buildx'
+  - '--build-arg'
+  - 'CLOUD_SDK_VERSION=$_VERSION'
   - 'create'
   - '--name'
   - 'mybuilder'
@@ -21,6 +23,8 @@ steps:
   id: multi_arch_step2
   args:
   - 'buildx'
+  - '--build-arg'
+  - 'CLOUD_SDK_VERSION=$_VERSION'
   - 'use'
   - 'mybuilder'
   waitFor: ['multi_arch_step1']
@@ -28,6 +32,8 @@ steps:
   id: multi_arch_step3
   args:
   - 'buildx'
+  - '--build-arg'
+  - 'CLOUD_SDK_VERSION=$_VERSION'
   - 'inspect'
   - '--bootstrap'
   waitFor: ['multi_arch_step2']
